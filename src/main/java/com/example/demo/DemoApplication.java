@@ -31,12 +31,22 @@ public class DemoApplication {
 		}
 		MyBean myBean = (MyBean) context.getBean("myBean"); //Bean을 꺼내올 때는 카멜케이스 형식으로 꺼내와야 한다.
 //		Person person = (Person) context.getBean("person");
-		Person person = (Person) context.getBean(Person.class); //클래스 이름으로 꺼내올 수도 있다.
 
 		//자바 11 버전 이상부터 자동으로 형을 만들어줘서 클래스를 붙여주지 않아도 빈을 꺼내올 수 있다.
 //		var person = (Person) context.getBean(Person.class);
 
+		//Configuration을 활용하여 Person 클래스를 2개를 생성했을 경우 에러가 발생함. 그때는 이걸 사용하면 안 됨.
+//		Person person = (Person) context.getBean(Person.class); //클래스 이름으로 꺼내올 수도 있다.
+		//MyConfig 파일
+		var helloperson = (Person) context.getBean("helloMyPerson");
+		//Person 파일
+		var person = (Person) context.getBean("person");
 		System.out.println(person);
+
+		var carculatorServeice = (MyCalculatorService) context.getBean(MyCalculatorService.class);
+		System.out.println(carculatorServeice.calcAdd(5,3));
+
+
 	}
 
 }
