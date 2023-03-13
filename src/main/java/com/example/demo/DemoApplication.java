@@ -47,6 +47,30 @@ public class DemoApplication {
 		System.out.println(carculatorServeice.calcAdd(5,3));
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		MyBean myBean1 = (MyBean) context.getBean("myBean");
+		MyBean myBean2 = (MyBean) context.getBean("myBean");
+		//싱글턴으로 인해서 Mybean 객체는 하나이므로 myBean1과 myBean2는 같은 객체를
+		//호출해주는 것으므로 == 비교시 주소가 같으므로 True가 나온다.
+		System.out.println(myBean1 == myBean2);
+
+		//아래에서 발생할 수 있는 문제점은 GrettingService.class에서 Gretting 클래스가 2개이상이면 오류 발생할 수 있음.
+		//그러나 지금은 괜찮음.
+		GrettingService grettingService = (GrettingService) context.getBean(GrettingService.class);
+		grettingService.greet(); //Hello! 출력
 	}
 
 }
